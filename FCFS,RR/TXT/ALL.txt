@@ -1,0 +1,60 @@
+All.java
+import java.util.Scanner;
+
+public class All {
+    public static void main(String[] args){
+        FCFS fcfs = new FCFS();
+        RR rr = new RR();
+        Scanner scan = new Scanner(System.in);
+        while(true){
+            System.out.println("\n The available algorithms are: ");
+            System.out.println("1. FCFS");
+            System.out.println("2. RR");
+            System.out.println("3. Exit");
+            System.out.println("Choose your algorithm: ");
+            int algo = scan.nextInt();
+            if (algo==1){
+                System.out.println("Enter the number of processes: ");
+                int n = scan.nextInt();
+                int[] processes = new int[n];
+                //Burst time of all processes
+                int[] burst_time = new int[n];
+                System.out.println("Enter the processes: ");
+                for (int i = 0; i < n; i++){
+                    processes[i] = scan.nextInt();
+                }
+                System.out.println("Enter the Burst time for he processes: ");
+                for (int i = 0; i < n; i++){
+                    burst_time[i] = scan.nextInt();
+                }
+                fcfs.findavgTime(processes, n, burst_time);
+            }
+            else if(algo==2){
+                int quantum;
+                System.out.println("Enter the number of processes: ");
+                int n = scan.nextInt();
+                int[] processes = new int[n];
+                //Burst time of all processes
+                int[] burst_time = new int[n];
+                System.out.println("Enter the processes: ");
+                for (int i = 0; i < n; i++){
+                    processes[i] = scan.nextInt();
+                }
+                System.out.println("Enter the Burst time for the processes: ");
+                for (int i = 0; i < n; i++){
+                    burst_time[i] = scan.nextInt();
+                }
+                quantum = scan.nextInt();
+                rr.findavgTime(processes, n, burst_time, quantum);
+            }
+            else if(algo==3){
+                System.out.println("Exiting the code...");
+                break;
+            }
+            else{
+                System.out.println("Invalid Input");
+            }
+        }
+        scan.close();
+    }
+}
